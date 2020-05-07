@@ -4,16 +4,16 @@ import Highscores from "./Highscores";
 const LandingPage = (props) => {
   return (
     <div className="App">
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1>Code Quiz Challenge</h1>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+      >
+        <h1 style={{ textShadow: "2px 2px 2px gray" }}>Code Quiz Challenge</h1>
       </div>
       <div className="descriptContainer">
-        <p style={{ width: "500px" }}>
+        <p style={{ width: "500px", textAlign: "center" }}>
           Try to answer as many multiple choices questions as you can before the
           time runs out. Your score doubles on each correct answer. If you
-          answer incorrectly you receive no points and correct answer afterwards
-          goes back to default till next streak is hit. Let's learn some
-          Javascript.
+          answer incorrectly you receive no points. Let's see what you got.
         </p>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
