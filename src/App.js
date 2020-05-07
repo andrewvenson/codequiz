@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import LandingPage from "./Components/LandingPage";
 import "./App.css";
 
 function App() {
+  const [quiz, setQuiz] = useState(false);
   return (
-    <div className="App">
-      <h1>Code Quiz Challenge</h1>
-      <div className="descriptContainer">
-        <p style={{ width: "500px" }}>
-          Try to answer as many multiple choices questions as you can before the
-          time runs out. Your score doubles on each correct answer. If you
-          answer incorrectly you receive no points and correct answer afterwards
-          goes back to default till next streak is hit. Let's learn some
-          Javascript.
-        </p>
-      </div>
-    </div>
+    <Container>
+      {!quiz ? <LandingPage /> : console.log("quiz started")}
+    </Container>
   );
 }
 
