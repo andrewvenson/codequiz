@@ -1,7 +1,7 @@
 import React from "react";
 import Highscores from "./Highscores";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   return (
     <div className="App">
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -18,6 +18,7 @@ const LandingPage = () => {
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <button
+          onClick={() => props.setquiz(true)}
           className="startQuiz"
           style={{
             borderRadius: "5px",
