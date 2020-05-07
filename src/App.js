@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+      <h1>Code Quiz Challenge</h1>
+      <div className="descriptContainer">
+        <p style={{ width: "500px" }}>
+          Try to answer as many multiple choices questions as you can before the
+          time runs out. Your score doubles on each correct answer. If you
+          answer incorrectly you receive no points and correct answer afterwards
+          goes back to default till next streak is hit. Let's learn some
+          Javascript.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
     </div>
   );
 }
