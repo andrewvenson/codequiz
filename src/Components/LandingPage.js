@@ -1,9 +1,12 @@
 import React from "react";
+import Highscores from "./Highscores";
 
 const LandingPage = () => {
   return (
     <div className="App">
-      <h1>Code Quiz Challenge</h1>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1>Code Quiz Challenge</h1>
+      </div>
       <div className="descriptContainer">
         <p style={{ width: "500px" }}>
           Try to answer as many multiple choices questions as you can before the
@@ -13,18 +16,25 @@ const LandingPage = () => {
           Javascript.
         </p>
       </div>
-      <button
-        style={{
-          borderRadius: "5px",
-          padding: "10px",
-          color: "white",
-          backgroundColor: "purple",
-          borderColor: "purple",
-          boxShadow: "2px 3px 4px gray",
-        }}
-      >
-        Start Quiz
-      </button>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button
+          className="startQuiz"
+          style={{
+            borderRadius: "5px",
+            padding: "10px",
+            color: "white",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            boxShadow: "2px 3px 4px gray",
+            cursor: "pointer",
+          }}
+        >
+          Start Quiz
+        </button>
+      </div>
+
+      <hr style={{ color: "gray", width: "50%", marginTop: "25px" }} />
+      <Highscores />
     </div>
   );
 };
