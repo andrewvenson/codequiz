@@ -9,7 +9,11 @@ const Quiz = (props) => {
 
   const [codequiz, setCodeQuiz] = useState([]);
 
-  const [quizcounter, setquizCounter] = useState(0);
+  const [quizcounter, setquizCounter] = useState({
+    counter: 0,
+    display: "none",
+    answer: "",
+  });
 
   useEffect(() => {
     quizRef
@@ -26,13 +30,44 @@ const Quiz = (props) => {
       });
   }, []);
 
+  //   checks if answer is correct | will add points to if correct
   const checkData = (answer) => {
-    console.log(answer);
-    if (answer === codequiz[quizcounter].answer.true) {
-      console.log("you got it mane");
+    if (answer === codequiz[quizcounter.counter].answer.true) {
+      console.log("yayy you got it right");
+      setquizCounter({
+        ...quizcounter,
+        counter: quizcounter.counter + 1,
+        display: "block",
+        answer: "You got this Correct",
+      });
     } else {
-      console.log("ahhh you got this incorrect");
+      setquizCounter({
+        ...quizcounter,
+        counter: quizcounter.counter + 1,
+        display: "block",
+        answer: "You got this Incorrect",
+      });
     }
+
+    hideData();
+  };
+
+  //   setTimeout on displaying status of answer
+  //  why do I have to change quicounter.counter again | only way I was able to get the answer status to dissappear without reverting to next question
+  const hideData = () => {
+    setTimeout(() => {
+      setquizCounter({
+        ...quizcounter,
+        display: "none",
+        counter: quizcounter.counter + 1,
+      });
+    }, 1500);
+  };
+
+  const displayAnswer = {
+    display: quizcounter.display,
+    textDecoration: "underline",
+    color: "lightgray",
   };
 
   return (
@@ -66,12 +101,14 @@ const Quiz = (props) => {
       <div style={{ textAlign: "center" }}>
         <Question
           question={
-            codequiz[quizcounter] ? codequiz[quizcounter].question : `...`
+            codequiz[quizcounter.counter]
+              ? codequiz[quizcounter.counter].question
+              : `...`
           }
         />
 
-        {codequiz[quizcounter] &&
-          codequiz[quizcounter].answer.all.map((answer, index) => (
+        {codequiz[quizcounter.counter] &&
+          codequiz[quizcounter.counter].answer.all.map((answer, index) => (
             <div key={index}>
               <button
                 style={{
@@ -91,6 +128,7 @@ const Quiz = (props) => {
             </div>
           ))}
         <br />
+        <h3 style={displayAnswer}>{quizcounter.answer}</h3>
       </div>
     </div>
   );
