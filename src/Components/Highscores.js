@@ -17,7 +17,6 @@ const Highscores = () => {
         const items = [];
         snapshot.forEach((doc) => {
           // push each object of data to items array
-          console.log(doc.data());
           items.push(doc.data());
         });
         // set our gotdata state to new array of objects

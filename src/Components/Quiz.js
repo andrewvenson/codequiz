@@ -15,6 +15,11 @@ const Quiz = (props) => {
     answer: "",
   });
 
+  const [points, setPoints] = useState({
+    quizpoints: 0,
+    streak: 0,
+  });
+
   useEffect(() => {
     quizRef
       .get()
@@ -28,12 +33,26 @@ const Quiz = (props) => {
       .catch((err) => {
         console.log("Error getting documents", err);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //   checks if answer is correct | will add points to if correct
   const checkData = (answer) => {
     if (answer === codequiz[quizcounter.counter].answer.true) {
-      console.log("yayy you got it right");
+      if (points.streak >= 1) {
+        setPoints({
+          ...points,
+          quizpoints: points.quizpoints * 2,
+          streak: points.streak + 1,
+        });
+      } else {
+        setPoints({
+          ...points,
+          quizpoints: points.quizpoints + 10,
+          streak: points.streak + 1,
+        });
+      }
+
       setquizCounter({
         ...quizcounter,
         counter: quizcounter.counter + 1,
@@ -41,6 +60,11 @@ const Quiz = (props) => {
         answer: "You got this Correct",
       });
     } else {
+      setPoints({
+        ...points,
+        quizpoints: points.quizpoints,
+        streak: 0,
+      });
       setquizCounter({
         ...quizcounter,
         counter: quizcounter.counter + 1,
@@ -53,7 +77,6 @@ const Quiz = (props) => {
   };
 
   //   setTimeout on displaying status of answer
-  //  why do I have to change quicounter.counter again | only way I was able to get the answer status to dissappear without reverting to next question
   const hideData = () => {
     setTimeout(() => {
       setquizCounter({
