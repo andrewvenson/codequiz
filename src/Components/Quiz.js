@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
 import Question from "./Questions";
 import Timer from "./Timer";
 import firebase from "../Firebase";
@@ -6,19 +7,20 @@ const Quiz = (props) => {
   const db = firebase.firestore();
 
   const quizRef = db.collection("quiz");
-
   const [codequiz, setCodeQuiz] = useState([]);
-
   const [quizcounter, setquizCounter] = useState({
     counter: 0,
     display: "none",
     answer: "",
   });
-
   const [points, setPoints] = useState({
     quizpoints: 0,
     streak: 0,
   });
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     quizRef
@@ -118,7 +120,7 @@ const Quiz = (props) => {
           View high scores
         </button>
         <h2 style={{ textShadow: "2px 2px 2px gray" }}>codequiz</h2>
-        <Timer setquiz={props.setquiz} />
+        <Timer handleshow={handleShow} />
       </div>
       <hr />
       <div style={{ textAlign: "center" }}>
@@ -153,6 +155,22 @@ const Quiz = (props) => {
         <br />
         <h3 style={displayAnswer}>{quizcounter.answer}</h3>
       </div>
+      <>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Final Results</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     </div>
   );
 };
