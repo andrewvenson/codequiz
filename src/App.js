@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LandingPage from "./Components/LandingPage";
-import Quiz from "./Components/Quiz";
+import QuizFrame from "./Components/QuizFrame";
 import "./App.css";
 import { Container } from "react-bootstrap";
 
@@ -8,7 +8,11 @@ function App() {
   const [quiz, setQuiz] = useState(false);
   return (
     <Container>
-      {!quiz ? <LandingPage setquiz={setQuiz} /> : <Quiz setquiz={setQuiz} />}
+      {!quiz ? (
+        <LandingPage setquiz={setQuiz} />
+      ) : (
+        <QuizFrame setquiz={setQuiz} />
+      )}
     </Container>
   );
 }
