@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Highscores from "./Highscores";
 
 const LandingPage = (props) => {
+  const [allscores, setAllScores] = useState(false);
   return (
     <div className="App">
       <div
@@ -35,7 +36,7 @@ const LandingPage = (props) => {
       </div>
 
       <hr style={{ color: "gray", width: "50%", marginTop: "25px" }} />
-      <Highscores />
+      <Highscores allscores={allscores} setallscores={setAllScores} />
     </div>
   );
 };

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../Firebase";
 
-const Highscores = () => {
+const Highscores = (props) => {
   const db = firebase.firestore();
 
   const [stats, setStats] = useState([]);
 
-  const userRefSorted = db
-    .collection("stats")
-    .orderBy("score", "desc")
-    .limit(10);
+  let userRefSorted = db.collection("stats").orderBy("score", "desc").limit(10);
+
+  if (props.allscores) {
+    userRefSorted = db.collection("stats").orderBy("score", "desc");
+  } else {
+    db.collection("stats").orderBy("score", "desc").limit(10);
+  }
 
   // hook for component life cycle
   useEffect(() => {
@@ -29,7 +32,7 @@ const Highscores = () => {
         console.log("Error getting documents", err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.allscores]);
 
   return (
     <div>
@@ -66,8 +69,13 @@ const Highscores = () => {
             cursor: "pointer",
             marginBottom: "20px",
           }}
+          onClick={() =>
+            props.allscores
+              ? props.setallscores(false)
+              : props.setallscores(true)
+          }
         >
-          View All Scores
+          {props.allscores ? `Show Highscores` : `Show All Scores`}
         </button>
       </div>
     </div>
