@@ -6,7 +6,8 @@ const Timer = (props) => {
   useEffect(() => {
     // decrements timer by 1 on each interval
     const interval = setInterval(() => {
-      if (timer === 70) {
+      if (timer === 60) {
+        props.settimerstatus(false);
         props.handleshow();
       } else {
         setTimer(timer - 1);
@@ -18,7 +19,7 @@ const Timer = (props) => {
   });
 
   return (
-    <p>
+    <p style={{ display: "flex", justifyContent: "flex-end" }}>
       {timer} <span>sec</span>
     </p>
   );
