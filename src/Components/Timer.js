@@ -6,9 +6,10 @@ const Timer = (props) => {
   useEffect(() => {
     // decrements timer by 1 on each interval
     const interval = setInterval(() => {
-      setTimer(timer - 1);
-      if (timer === 0) {
-        props.setquiz(false);
+      if (timer === 70) {
+        props.handleshow();
+      } else {
+        setTimer(timer - 1);
       }
     }, 1000);
 
