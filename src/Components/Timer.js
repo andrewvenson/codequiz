@@ -6,7 +6,7 @@ const Timer = (props) => {
   useEffect(() => {
     // decrements timer by 1 on each interval
     const interval = setInterval(() => {
-      if (timer === 60) {
+      if (timer === 0) {
         props.settimerstatus(false);
         props.handleshow();
       } else {
@@ -19,8 +19,21 @@ const Timer = (props) => {
   });
 
   return (
-    <p style={{ display: "flex", justifyContent: "flex-end" }}>
-      {timer} <span>sec</span>
+    <p
+      style={{ display: "flex", justifyContent: "flex-end", marginTop: "5px" }}
+    >
+      <span
+        style={{
+          backgroundColor: "lightgray",
+          padding: "3px",
+          borderRadius: "5px",
+          boxShadow: "0px 0px 4px gray",
+          fontWeight: "bold",
+          color: "#4f4f4f",
+        }}
+      >
+        {timer} sec
+      </span>
     </p>
   );
 };
