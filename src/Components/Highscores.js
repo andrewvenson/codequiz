@@ -36,10 +36,17 @@ const Highscores = () => {
       <div className="highscoreContainer">
         <ol className="highscores">
           {stats.map((stat, index) => (
-            <li key={index} style={{ backgroundColor: "#b395c2" }}>
-              <span style={{ color: "white" }}>{stat.nickname}</span> :{" "}
-              <span style={{ color: "#7842f5" }}>{stat.score}pts</span> |{" "}
-              <span style={{ color: "lightgray" }}>{stat.date}</span>
+            <li
+              key={index}
+              style={{
+                backgroundColor: "#b395c2",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span style={{ color: "white" }}>{stat.nickname}</span>
+                <span style={{ color: "black" }}>:</span>
+                <span style={{ color: "#7842f5" }}>{stat.score}pts </span>
+              </div>
             </li>
           ))}
         </ol>

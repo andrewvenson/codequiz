@@ -88,13 +88,13 @@ const Quiz = (props) => {
     const month = date.getMonth();
     const year = date.getFullYear();
 
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+    // const hours = date.getHours();
+    // const minutes = date.getMinutes();
 
     statRef.doc().set({
       nickname: points.nickname,
       score: points.quizpoints,
-      date: `${month}-${day}-${year} - ${hours}:${minutes}`,
+      date: `${month}-${day}-${year}`,
     });
     props.setquiz(false);
   };
