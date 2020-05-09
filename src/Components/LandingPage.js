@@ -8,7 +8,7 @@ const LandingPage = (props) => {
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
-        <h1 style={{ textShadow: "2px 2px 2px gray" }}>Code Quiz Challenge</h1>
+        <h1 style={{ textShadow: "2px 2px 2px gray" }}>JS Code Quiz</h1>
       </div>
       <div className="descriptContainer">
         <p style={{ width: "500px", textAlign: "center" }}>
