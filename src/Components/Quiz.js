@@ -126,7 +126,7 @@ const Quiz = (props) => {
         >
           View high scores
         </button>
-        <h2 style={{ textShadow: "2px 2px 2px gray" }}>codequiz</h2>
+        <h2 style={{ textShadow: "2px 2px 2px gray" }}>jscodequiz</h2>
         {/* <Timer handleshow={handleShow} /> */}
       </div>
       <hr />
