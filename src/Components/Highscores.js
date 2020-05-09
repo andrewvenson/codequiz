@@ -6,7 +6,10 @@ const Highscores = () => {
 
   const [stats, setStats] = useState([]);
 
-  const userRefSorted = db.collection("stats").orderBy("score", "desc");
+  const userRefSorted = db
+    .collection("stats")
+    .orderBy("score", "desc")
+    .limit(10);
 
   // hook for component life cycle
   useEffect(() => {
@@ -50,6 +53,22 @@ const Highscores = () => {
             </li>
           ))}
         </ol>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button
+          style={{
+            borderRadius: "5px",
+            padding: "10px",
+            color: "white",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            boxShadow: "2px 3px 4px gray",
+            cursor: "pointer",
+            marginBottom: "20px",
+          }}
+        >
+          View All Scores
+        </button>
       </div>
     </div>
   );

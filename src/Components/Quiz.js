@@ -21,6 +21,7 @@ const Quiz = (props) => {
     nickname: "",
   });
 
+  // boostrap modal states
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -106,8 +107,9 @@ const Quiz = (props) => {
         ...quizcounter,
         display: "none",
         counter: quizcounter.counter + 1,
+        answer: "",
       });
-    }, 500);
+    }, 300);
   };
 
   const displayAnswer = {
@@ -141,7 +143,7 @@ const Quiz = (props) => {
           View high scores
         </button>
         <h2 style={{ textShadow: "2px 2px 2px gray" }}>codequiz</h2>
-        <Timer handleshow={handleShow} />
+        <Timer handleshow={handleShow} quizcounter={quizcounter} />
       </div>
       <hr />
       <div style={{ textAlign: "center" }}>
