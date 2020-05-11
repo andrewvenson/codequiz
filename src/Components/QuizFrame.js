@@ -12,6 +12,7 @@ const QuizFrame = (props) => {
   const [quizentry, setQuizEntry] = useState({
     nickname: "",
     points: 0,
+    validation: "none",
   });
 
   //   state to for setting and checking timer status
@@ -37,6 +38,11 @@ const QuizFrame = (props) => {
     props.setquiz(false);
   };
 
+  const validation = {
+    color: "red",
+    display: quizentry.validation,
+  };
+
   return (
     <>
       <Timer
@@ -56,6 +62,9 @@ const QuizFrame = (props) => {
             <Modal.Title>Final Results</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <p className="validation" style={validation}>
+              Must enter a nickname
+            </p>
             Wooo, you got {quizentry.points} points!{" "}
             <form>
               <input
@@ -78,7 +87,11 @@ const QuizFrame = (props) => {
                 boxShadow: "2px 3px 4px gray",
                 cursor: "pointer",
               }}
-              onClick={save}
+              onClick={
+                quizentry.nickname === ""
+                  ? () => setQuizEntry({ ...quizentry, validation: "block" })
+                  : save
+              }
             >
               Submit
             </Button>

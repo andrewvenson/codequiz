@@ -37,10 +37,10 @@ const Highscores = (props) => {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <h2>Highscores</h2>
+        <h2>{props.allscores ? `All scores` : `Highscores`}</h2>
       </div>
       <div className="highscoreContainer">
-        <ol className="highscores">
+        <ol className="highscores" style={{ marginBottom: "0px" }}>
           {stats.map((stat, index) => (
             <li
               key={index}
@@ -67,7 +67,7 @@ const Highscores = (props) => {
             borderColor: "purple",
             boxShadow: "2px 3px 4px gray",
             cursor: "pointer",
-            marginBottom: "20px",
+            marginBottom: "12px",
           }}
           onClick={() =>
             props.allscores
