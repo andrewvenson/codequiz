@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = (props) => {
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(75);
 
   useEffect(() => {
     // decrements timer by 1 on each interval
     const interval = setInterval(() => {
-      if (timer === 70) {
+      if (timer === 0) {
         props.settimerstatus(false);
         props.handleshow();
       } else {
