@@ -6,7 +6,7 @@ const LandingPage = (props) => {
   return (
     <div className="App">
       <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+        style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}
       >
         <h1 style={{ textShadow: "2px 2px 2px gray" }}>JS Code Quiz</h1>
       </div>
